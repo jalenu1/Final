@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 var velocity : Vector2
 
-export var max_speed : int = 1000
+export var max_speed : int = 150
 export var gravity : float = 55
-export var jump_force : = 1600
+export var jump_force : = 1000
 export var acceleration : int = 50
 export var jump_buffer_time : int = 15
 export var cayote_time : int = 15
