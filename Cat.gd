@@ -2,10 +2,10 @@ extends KinematicBody2D
 
 var velocity : Vector2
 
-export var max_speed : int = 150
-export var gravity : float = 55
-export var jump_force : = 1000
-export var acceleration : int = 50
+export var max_speed : int = 4800
+export var gravity : float = 640
+export var jump_force : = 12800
+export var acceleration : int = 1600
 export var jump_buffer_time : int = 15
 export var cayote_time : int = 15
 
@@ -20,21 +20,25 @@ func _physics_process(delta):
 	
 	#Gravity
 	if not is_on_floor():
+		$AnimatedSprite.play("Jump")
 		if cayote_counter > 0:
 			cayote_counter -= 1
 		
 		velocity.y += gravity
-		if velocity.y > 2000:
-			velocity.y = 2000
+		if velocity.y > 6400:
+			velocity.y = 6400
 
 	#Movement
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += acceleration
-		$Sprite.flip_h = false
+		$AnimatedSprite.play("Walk")
+		$AnimatedSprite.flip_h = false
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x -= acceleration
-		$Sprite.flip_h = true
+		$AnimatedSprite.play("Walk")
+		$AnimatedSprite.flip_h = true
 	else:
+		$AnimatedSprite.play("Idle")
 		velocity.x = lerp(velocity.x,0,0.2)
 	
 	if velocity.x > max_speed:
@@ -55,5 +59,5 @@ func _physics_process(delta):
 	#Long Jump
 	if Input.is_action_just_released("ui_select"):
 		if velocity.y < 0:
-			velocity.y += 400
+			velocity.y += 19200
 	velocity = move_and_slide(velocity, Vector2.UP)
