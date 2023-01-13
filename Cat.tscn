@@ -425,7 +425,7 @@ vframes = 38
 scale = Vector2( 32, 32 )
 frames = SubResource( 45 )
 animation = "Idle"
-frame = 8
+frame = 14
 playing = true
 __meta__ = {
 "_edit_group_": true
@@ -450,7 +450,6 @@ collision_mask = 2
 collide_with_areas = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.8, 0.8 )
