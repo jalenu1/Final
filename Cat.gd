@@ -6,8 +6,8 @@ export var max_speed : int = 4800
 export var gravity : float = 640
 export var jump_force : = 12800
 export var acceleration : int = 1600
-export var jump_buffer_time : int = 15
-export var cayote_time : int = 15
+export var jump_buffer_time : int = 25
+export var cayote_time : int = 25
 
 
 var jump_buffer_counter : int = 0
@@ -25,8 +25,8 @@ func _physics_process(delta):
 			cayote_counter -= 1
 		
 		velocity.y += gravity
-		if velocity.y > 6400:
-			velocity.y = 6400
+		if velocity.y > 10240:
+			velocity.y = 10240
 
 	#Movement
 	if Input.is_action_pressed("ui_right"):
@@ -59,5 +59,5 @@ func _physics_process(delta):
 	#Long Jump
 	if Input.is_action_just_released("ui_select"):
 		if velocity.y < 0:
-			velocity.y += 19200
+			velocity.y += 1200
 	velocity = move_and_slide(velocity, Vector2.UP)
