@@ -424,7 +424,8 @@ vframes = 38
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 32, 32 )
 frames = SubResource( 45 )
-animation = "Idle"
+animation = "Walk"
+frame = 11
 playing = true
 __meta__ = {
 "_edit_group_": true
