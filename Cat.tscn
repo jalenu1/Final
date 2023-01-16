@@ -379,7 +379,7 @@ animations = [ {
 "frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ) ],
 "loop": true,
 "name": "Jump",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ) ],
 "loop": true,
@@ -425,7 +425,6 @@ vframes = 38
 scale = Vector2( 32, 32 )
 frames = SubResource( 45 )
 animation = "Idle"
-frame = 14
 playing = true
 __meta__ = {
 "_edit_group_": true
