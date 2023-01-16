@@ -61,3 +61,7 @@ func _physics_process(delta):
 		if velocity.y < 0:
 			velocity.y += 1200
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+
+func _on_FallBarrier_body_entered(body):
+	get_tree().change_scene("res://Map.tscn")
