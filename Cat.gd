@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+signal health_updated(health)
+signal killed()
+
+
 var velocity : Vector2
 
 export var max_speed : int = 4800
@@ -9,6 +13,10 @@ export var acceleration : int = 1600
 export var jump_buffer_time : int = 25
 export var cayote_time : int = 25
 
+export (float) var max_health = 100
+onready var health = max_health setget _set_health
+onready var invulnerability_timer = $InvulnerabilityTimer
+onready var effects_animation = $EffectsAnimation
 
 var jump_buffer_counter : int = 0
 var cayote_counter : int = 0
@@ -62,6 +70,29 @@ func _physics_process(delta):
 			velocity.y += 1200
 	velocity = move_and_slide(velocity, Vector2.UP)
 
+func damage(amount):
+	if invulnerability_timer.is_stopped():
+		invulnerability_timer.start()
+		_set_health(health - amount)
+		effects_animation.play("Damage")
+		effects_animation.queue("Immune")
+
+func kill():
+	pass
+
+func _set_health(value):
+	var prev_health = health
+	health = clamp(value, 0, max_health)
+	if health != prev_health:
+		emit_signal("health_updated", health)
+		if health == 0:
+			kill()
+			emit_signal("Killed")
 
 func _on_FallBarrier_body_entered(body):
 	get_tree().change_scene("res://Map.tscn")
+
+
+
+func _on_InvulnerabilityTimer_timeout():
+	effects_animation.play("Idle")
