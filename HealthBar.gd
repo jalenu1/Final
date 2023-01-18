@@ -10,6 +10,7 @@ func _on_health_updated(health, amount):
 	update_tween.start()
 func _on_max_health_updated(max_health):
 	health_bar.max_value = max_health
-	health_under.max_value = max_hea
+	health_under.max_value = max_health
+	
 
 

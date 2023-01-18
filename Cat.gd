@@ -54,7 +54,7 @@ func _physics_process(delta):
 	elif velocity.x < -max_speed:
 		velocity.x = -max_speed
 	
-	#Prevent Jump Delay
+	#Jump Delay
 	if Input.is_action_pressed("ui_select"):
 		jump_buffer_counter = jump_buffer_time
 	if jump_buffer_counter > 0:
@@ -88,6 +88,10 @@ func _set_health(value):
 		if health == 0:
 			kill()
 			emit_signal("Killed")
+			
+			
+			
+
 
 func _on_FallBarrier_body_entered(body):
 	get_tree().change_scene("res://Map.tscn")

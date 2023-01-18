@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://Tile32x32_2/Tile.png" type="Texture" id=1]
 [ext_resource path="res://Cat.gd" type="Script" id=2]
@@ -420,7 +420,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=144]
+extents = Vector2( 166.75, 269 )
+
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( -28, 37 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -442,8 +446,8 @@ vframes = 38
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 32, 32 )
 frames = SubResource( 45 )
-animation = "Damage"
-frame = 1
+animation = "Attack"
+frame = 14
 playing = true
 __meta__ = {
 "_edit_group_": true
@@ -457,15 +461,6 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
 smoothing_speed = 8.0
-
-[node name="WallChecker" type="RayCast2D" parent="."]
-visible = false
-position = Vector2( 0, 25 )
-rotation = -1.5708
-enabled = true
-cast_to = Vector2( 0, 30 )
-collision_mask = 2
-collide_with_areas = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 visible = false
@@ -481,6 +476,21 @@ texture = ExtResource( 3 )
 
 [node name="InvulnerabilityTimer" type="Timer" parent="."]
 
-[node name="Control" parent="." instance=ExtResource( 4 )]
+[node name="HealthBar" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = -397.0
+margin_top = -254.0
+margin_right = -397.0
+margin_bottom = -254.0
+rect_scale = Vector2( 12, 12 )
+
+[node name="Cat Attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat Attack"]
+position = Vector2( 490, 235 )
+shape = SubResource( 144 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]
