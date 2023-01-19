@@ -1,41 +1,27 @@
 extends KinematicBody2D
 
-var is_moving_left = true
-
-var gravity = 10
-var velocity = Vector2(0,0)
-
-var speed = 32
+var velocity = Vector2()
+export var direction = 1
+export var detects_cliffs = true
 
 func _ready():
-	pass
-	#$AnimationPlayer.play("")
-	
+	if direction == -1:
+		$AnimatedSprite.flip_h = true
+	$FloorCheck.position.x = $CollisionShape2D.shape.get_extents().x * direction
+	$FloorCheck.enabled = detects_cliffs
 
-func _process(delta):
-	move_character()
-	detect_turn_around()
+func _physics_process(delta):
+	
+	if is_on_wall() or not $FloorCheck.is_colliding() and detects_cliffs and is_on_floor():
+		
+		direction = direction * -1
+		$AnimatedSprite.flip_h = not $AnimatedSprite.flip_h
+		$FloorCheck.position.x = $CollisionShape2D.shape.get_extents().x * direction
 	
 	
-func move_character():
-	velocity.x = -speed if is_moving_left else speed
+	velocity.y += 20
 	
-	velocity.y += gravity
+	velocity.x = 400 * direction
 	
-	
-	velocity = move_and_slide(velocity, Vector2.UP)
-	
-func detect_turn_around():
-	if not $RayCast2D.is_colliding() and is_on_floor():
-		is_moving_left = !is_moving_left
-		scale.x = -scale.x
+	move_and_slide(velocity, Vector2.UP)
 
-
-func hit():
-	$AttackDetector.monitoring = true
-	
-func end_of_hit():
-	$AttackDetector.monitoring = false
-func start_walk():
-	#$AnimationPlayer.play("walk")
-	pass

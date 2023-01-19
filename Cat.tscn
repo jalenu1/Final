@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Tile32x32_2/Tile.png" type="Texture" id=1]
 [ext_resource path="res://Cat.gd" type="Script" id=2]
-[ext_resource path="res://Fantasy Forests/Clearing 4.png" type="Texture" id=3]
+[ext_resource path="res://Large 1024x1024/Green Nebula/Green_Nebula_06-1024x1024.png" type="Texture" id=3]
 [ext_resource path="res://HealthBar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=138]
@@ -392,7 +392,7 @@ animations = [ {
 "frames": [ SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
 "loop": true,
 "name": "Idle",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 141 ), null ],
 "loop": true,
@@ -402,7 +402,7 @@ animations = [ {
 "frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ) ],
 "loop": true,
 "name": "Jump",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ) ],
 "loop": true,
@@ -447,7 +447,7 @@ vframes = 38
 scale = Vector2( 32, 32 )
 frames = SubResource( 45 )
 animation = "Attack"
-frame = 14
+frame = 9
 playing = true
 __meta__ = {
 "_edit_group_": true
@@ -463,15 +463,14 @@ smoothing_enabled = true
 smoothing_speed = 8.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
+scale = Vector2( 32, 32 )
+transform = Transform2D( 32, 0, 0, 32, 0, 0 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.8, 0.8 )
-motion_mirroring = Vector2( 17920, 10240 )
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 1024, 1024 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 3104, 2512 )
-scale = Vector2( 10, 10 )
 texture = ExtResource( 3 )
 
 [node name="InvulnerabilityTimer" type="Timer" parent="."]
