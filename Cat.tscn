@@ -447,7 +447,7 @@ vframes = 38
 scale = Vector2( 32, 32 )
 frames = SubResource( 45 )
 animation = "Attack"
-frame = 9
+frame = 11
 playing = true
 __meta__ = {
 "_edit_group_": true
@@ -467,7 +467,7 @@ scale = Vector2( 32, 32 )
 transform = Transform2D( 32, 0, 0, 32, 0, 0 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.1, 0.1 )
+motion_scale = Vector2( 0.01, 0.01 )
 motion_mirroring = Vector2( 1024, 1024 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
@@ -492,4 +492,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

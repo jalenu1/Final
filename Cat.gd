@@ -14,7 +14,7 @@ export var jump_buffer_time : int = 25
 export var cayote_time : int = 25
 
 export (float) var max_health = 100
-onready var health = max_health setget _set_health
+#onready var health = max_health setget _set_health
 onready var invulnerability_timer = $InvulnerabilityTimer
 onready var effects_animation = $EffectsAnimation
 
@@ -70,24 +70,24 @@ func _physics_process(delta):
 			velocity.y += 1200
 	velocity = move_and_slide(velocity, Vector2.UP)
 
-func damage(amount):
-	if invulnerability_timer.is_stopped():
-		invulnerability_timer.start()
-		_set_health(health - amount)
-		effects_animation.play("Damage")
-		effects_animation.queue("Immune")
+#func damage(amount):
+#	if invulnerability_timer.is_stopped():
+#		invulnerability_timer.start()
+#		_set_health(health - amount)
+#		effects_animation.play("Damage")
+#		effects_animation.queue("Immune")
 
-func kill():
-	pass
+#func kill():
+#	pass
 
-func _set_health(value):
-	var prev_health = health
-	health = clamp(value, 0, max_health)
-	if health != prev_health:
-		emit_signal("health_updated", health)
-		if health == 0:
-			kill()
-			emit_signal("Killed")
+#func _set_health(value):
+#	var prev_health = health
+#	health = clamp(value, 0, max_health)
+#	if health != prev_health:
+#		emit_signal("health_updated", health)
+#		if health == 0:
+#			kill()
+#			emit_signal("Killed")
 			
 			
 			
@@ -100,3 +100,25 @@ func _on_FallBarrier_body_entered(body):
 
 func _on_InvulnerabilityTimer_timeout():
 	effects_animation.play("Idle")
+
+
+func bounce():
+	velocity.y = jump_force * 0.7
+
+func ouch(var enemyposx):
+	$AnimatedSprite.play("Damage")
+	velocity.y = jump_force * 0.5
+	
+	if position.x < enemyposx:
+		velocity.x = -800
+	elif position.x > enemyposx:
+		velocity.x = 800
+	
+	Input.action_release("ui_left")
+	Input.action_release("ui_left")
+	
+	$Timer.start()
+
+
+func _on_Timer_timeout():
+	get_tree().change_scene("res://Map.tscn")
