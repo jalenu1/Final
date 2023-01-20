@@ -12,11 +12,13 @@ export var jump_force : = 12800
 export var acceleration : int = 1600
 export var jump_buffer_time : int = 25
 export var cayote_time : int = 25
+var is_attacking = false;
+
 
 export (float) var max_health = 100
 #onready var health = max_health setget _set_health
-onready var invulnerability_timer = $InvulnerabilityTimer
-onready var effects_animation = $EffectsAnimation
+#onready var invulnerability_timer = $InvulnerabilityTimer
+#onready var effects_animation = $EffectsAnimation
 
 var jump_buffer_counter : int = 0
 var cayote_counter : int = 0
@@ -37,25 +39,39 @@ func _physics_process(delta):
 			velocity.y = 10240
 
 	#Movement
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right") && is_attacking == false:
 		velocity.x += acceleration
 		$AnimatedSprite.play("Walk")
 		$AnimatedSprite.flip_h = false
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("ui_left") && is_attacking == false:
 		velocity.x -= acceleration
 		$AnimatedSprite.play("Walk")
 		$AnimatedSprite.flip_h = true
 	else:
-		$AnimatedSprite.play("Idle")
-		velocity.x = lerp(velocity.x,0,0.2)
+		if is_attacking == false:
+			$AnimatedSprite.play("Idle")
+			velocity.x = lerp(velocity.x,0,0.2)
+			
+		
+			
+	
+	if Input.is_action_just_pressed("Attack"):
+		$AnimatedSprite.play("Attack")
+		is_attacking = true
+		$AnimatedSprite/CatAttack/CollisionShape2D.disabled = false;
+	
+	
+	
 	
 	if velocity.x > max_speed:
 		velocity.x = max_speed
 	elif velocity.x < -max_speed:
 		velocity.x = -max_speed
 	
+
+	
 	#Jump Delay
-	if Input.is_action_pressed("ui_select"):
+	if Input.is_action_pressed("jump"):
 		jump_buffer_counter = jump_buffer_time
 	if jump_buffer_counter > 0:
 		jump_buffer_counter -= 1
@@ -69,6 +85,12 @@ func _physics_process(delta):
 		if velocity.y < 0:
 			velocity.y += 1200
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "Attack":
+		$AnimatedSprite/CatAttack/CollisionShape2D.disabled = true;
+		is_attacking = false
+
 
 #func damage(amount):
 #	if invulnerability_timer.is_stopped():
@@ -98,8 +120,8 @@ func _on_FallBarrier_body_entered(body):
 
 
 
-func _on_InvulnerabilityTimer_timeout():
-	effects_animation.play("Idle")
+#func _on_InvulnerabilityTimer_timeout():
+#	effects_animation.play("Idle")
 
 
 func bounce():
@@ -122,3 +144,6 @@ func ouch(var enemyposx):
 
 func _on_Timer_timeout():
 	get_tree().change_scene("res://Map.tscn")
+
+
+

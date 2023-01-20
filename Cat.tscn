@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://Tile32x32_2/Tile.png" type="Texture" id=1]
 [ext_resource path="res://Cat.gd" type="Script" id=2]
@@ -23,18 +23,6 @@ region = Rect2( 64, 928, 32, 32 )
 [sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 1 )
 region = Rect2( 96, 928, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 960, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 960, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 960, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=53]
 atlas = ExtResource( 1 )
@@ -374,8 +362,8 @@ region = Rect2( 96, 768, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=45]
 animations = [ {
-"frames": [ SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
-"loop": true,
+"frames": [ SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
+"loop": false,
 "name": "Attack",
 "speed": 15.0
 }, {
@@ -392,7 +380,7 @@ animations = [ {
 "frames": [ SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
 "loop": true,
 "name": "Idle",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 141 ), null ],
 "loop": true,
@@ -400,7 +388,7 @@ animations = [ {
 "speed": 10.0
 }, {
 "frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ) ],
-"loop": true,
+"loop": false,
 "name": "Jump",
 "speed": 10.0
 }, {
@@ -421,7 +409,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=144]
-extents = Vector2( 166.75, 269 )
+extents = Vector2( 88.875, 269 )
+
+[sub_resource type="Animation" id=145]
+resource_name = "Attack"
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( -28, 37 )
@@ -438,17 +429,23 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-hframes = 8
-vframes = 38
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 32, 32 )
 frames = SubResource( 45 )
 animation = "Attack"
-frame = 11
+frame = 12
 playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CatAttack" type="Area2D" parent="AnimatedSprite"]
+scale = Vector2( 0.03125, 0.03125 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/CatAttack"]
+position = Vector2( 412.125, 235 )
+shape = SubResource( 144 )
+disabled = true
 __meta__ = {
 "_edit_group_": true
 }
@@ -483,16 +480,17 @@ margin_right = -397.0
 margin_bottom = -254.0
 rect_scale = Vector2( 12, 12 )
 
-[node name="Cat Attack" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat Attack"]
-position = Vector2( 490, 235 )
-shape = SubResource( 144 )
-__meta__ = {
-"_edit_group_": true
-}
-
 [node name="Timer" type="Timer" parent="."]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 145 )
+
+[node name="Sprite" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( -28, 37 )
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 38
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
