@@ -191,7 +191,7 @@ material = SubResource( 45 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 8 )
 animation = "Slime"
-frame = 1
+frame = 13
 playing = true
 flip_h = true
 

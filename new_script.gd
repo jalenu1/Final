@@ -8,8 +8,8 @@ export var direction = 1
 var last_wall_jump = 0
 const SPEED = 3500
 const RUN = 5000
-const GRAVITY = 100
-const JUMPFORCE = -3500
+const GRAVITY = 200
+const JUMPFORCE = -4500
 var is_attacking = false;
 
 func _physics_process(delta):
@@ -106,3 +106,29 @@ func move_fall(slowfall: bool):
 		if slowfall:
 			velocity.y = clamp(velocity.y, JUMPFORCE, 700)
 		velocity = move_and_slide(velocity, Vector2.UP)
+
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "Attack":
+		$AnimatedSprite/CatAttack/CollisionShape2D.disabled = true;
+		is_attacking = false
+
+func bounce():
+	velocity.y = JUMPFORCE * 0.8
+
+func ouch(var enemyposx):
+	$AnimatedSprite.play("Damage")
+	velocity.y = JUMPFORCE * 0.5
+	
+	if position.x < enemyposx:
+		velocity.x = -800
+	elif position.x > enemyposx:
+		velocity.x = 800
+	$Timer.start()
+	
+func _on_Timer_timeout():
+	get_tree().change_scene("res://Map.tscn")
+
+
+func _on_FallBarrier_body_entered(body):
+	get_tree().change_scene("res://Map.tscn")

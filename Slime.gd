@@ -31,20 +31,22 @@ func _physics_process(delta):
 func _on_TopCheck_body_entered(body):
 	$AnimatedSprite.play("Die")
 	speed = 0
-	#set_collision_layer_bit(5,false)
-	#set_collision_mask_bit(0, false)
-	#$TopCheck.set_collision_layer_bit(5, false)
-	#$TopCheck.set_collision_mask_bit(0,false)
-	#$SideCheck.set_collision_layer_bit(5, false)
-	#SideCheck.set_collision_mask_bit(0,false)
+	set_collision_layer_bit(5,false)
+	set_collision_mask_bit(0, false)
+	$TopCheck.set_collision_layer_bit(5, false)
+	$TopCheck.set_collision_mask_bit(0,false)
+	$SideCheck.set_collision_layer_bit(5, false)
+	$SideCheck.set_collision_mask_bit(0,false)
 	$Timer.start()
 	body.bounce()
 
 
 func _on_SideCheck_body_entered(body):
 	body.ouch(position.x)
+	get_tree().change_scene(("res://Map.tscn"))
 
 
 
 func _on_Timer_timeout():
 	queue_free()
+
