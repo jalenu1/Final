@@ -6,10 +6,10 @@ signal killed()
 
 var velocity : Vector2
 
-export var max_speed : int = 4800
-export var gravity : float = 640
-export var jump_force : = 12800
-export var acceleration : int = 1600
+export var max_speed : int = 1400
+export var gravity : float = 800
+export var jump_force : = 1600
+export var acceleration : int = 1000
 export var jump_buffer_time : int = 25
 export var cayote_time : int = 25
 var is_attacking = false;
@@ -35,8 +35,8 @@ func _physics_process(delta):
 			cayote_counter -= 1
 		
 		velocity.y += gravity
-		if velocity.y > 10240:
-			velocity.y = 10240
+		if velocity.y > 800:
+			velocity.y = 800
 
 	#Movement
 	if Input.is_action_pressed("ui_right") && is_attacking == false:
@@ -69,6 +69,12 @@ func _physics_process(delta):
 		velocity.x = -max_speed
 	
 
+
+	velocity.y += gravity * delta
+	velocity = move_and_slide(velocity, Vector2.UP)
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor():
+			velocity.y = max_speed
 	
 	#Jump Delay
 	if Input.is_action_pressed("jump"):
@@ -125,7 +131,7 @@ func _on_FallBarrier_body_entered(body):
 
 
 func bounce():
-	velocity.y = jump_force * 0.7
+	velocity.y = jump_force * 0.1
 
 func ouch(var enemyposx):
 	$AnimatedSprite.play("Damage")

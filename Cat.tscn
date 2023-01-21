@@ -1,7 +1,7 @@
 [gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://Tile32x32_2/Tile.png" type="Texture" id=1]
-[ext_resource path="res://Cat.gd" type="Script" id=2]
+[ext_resource path="res://new_script.gd" type="Script" id=2]
 [ext_resource path="res://Large 1024x1024/Green Nebula/Green_Nebula_06-1024x1024.png" type="Texture" id=3]
 [ext_resource path="res://HealthBar.tscn" type="PackedScene" id=4]
 
@@ -363,9 +363,9 @@ region = Rect2( 96, 768, 32, 32 )
 [sub_resource type="SpriteFrames" id=45]
 animations = [ {
 "frames": [ SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
-"loop": false,
+"loop": true,
 "name": "Attack",
-"speed": 15.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 139 ), SubResource( 140 ) ],
 "loop": true,
@@ -390,7 +390,7 @@ animations = [ {
 "frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ) ],
 "loop": false,
 "name": "Jump",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [ SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ) ],
 "loop": true,
@@ -400,7 +400,7 @@ animations = [ {
 "frames": [ SubResource( 115 ), SubResource( 114 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ) ],
 "loop": true,
 "name": "Walk",
-"speed": 15.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ) ],
 "loop": true,
@@ -417,27 +417,18 @@ resource_name = "Attack"
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( -28, 37 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 200 )
 scale = Vector2( 32, 32 )
 shape = SubResource( 138 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 32, 32 )
 frames = SubResource( 45 )
-animation = "Attack"
-frame = 12
+animation = "Idle"
+frame = 9
 playing = true
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CatAttack" type="Area2D" parent="AnimatedSprite"]
 scale = Vector2( 0.03125, 0.03125 )
@@ -446,9 +437,6 @@ scale = Vector2( 0.03125, 0.03125 )
 position = Vector2( 412.125, 235 )
 shape = SubResource( 144 )
 disabled = true
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -457,7 +445,7 @@ limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
-smoothing_speed = 8.0
+smoothing_speed = 100.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2( 32, 32 )
@@ -490,6 +478,13 @@ position = Vector2( -28, 37 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 38
+
+[node name="WallCheck" type="RayCast2D" parent="."]
+position = Vector2( 0, 200 )
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 500 )
+collision_mask = 2
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]
