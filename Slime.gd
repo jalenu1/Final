@@ -29,6 +29,7 @@ func _physics_process(delta):
 
 
 func _on_TopCheck_body_entered(body):
+	$SoundSquash.play()
 	$AnimatedSprite.play("Die")
 	speed = 0
 	set_collision_layer_bit(5,false)
@@ -43,6 +44,7 @@ func _on_TopCheck_body_entered(body):
 
 func _on_SideCheck_body_entered(body):
 	body.ouch(position.x)
+	
 	get_tree().change_scene(("res://GameOver.tscn"))
 
 

@@ -68,11 +68,14 @@ func _physics_process(delta):
 				state = States.AIR
 			
 	
-			if Input.is_action_just_pressed("jump") and is_on_wall():
+			elif Input.is_action_just_pressed("jump") and is_on_wall():
 				$SoundJump.play()
 				$AnimatedSprite.play("Jump")
 				velocity.y = JUMPFORCE
 				state = States.WALL
+				
+			else:
+				$AnimatedSprite.play("Idle")
 			set_direction()
 			move_fall(false)
 		
@@ -80,10 +83,10 @@ func _physics_process(delta):
 			if is_on_floor():
 				state = States.FLOOR
 				last_wall_jump = 0
+				
 				continue
 			elif not is_beside_wall():
 				state = States.AIR
-				$AnimatedSprite.play("Idle")
 				continue
 			$AnimatedSprite.play("Walljump")
 			
@@ -101,6 +104,7 @@ func set_direction():
 	
 	
 func is_beside_wall():
+	
 	return $WallCheck.is_colliding() 
 
 func move_fall(slowfall: bool):

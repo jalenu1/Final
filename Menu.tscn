@@ -5,7 +5,7 @@
 [ext_resource path="res://platformer-p15-assets (1)/UI/grey_button04.png" type="Texture" id=3]
 [ext_resource path="res://platformer-p15-assets (1)/UI/grey_button13.png" type="Texture" id=4]
 [ext_resource path="res://PlayButton.gd" type="Script" id=5]
-[ext_resource path="res://soundsandmusic/music/Swinging Pants.ogg" type="AudioStream" id=6]
+[ext_resource path="res://soundsandmusic/music/KiKisDeliver.mp3" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50

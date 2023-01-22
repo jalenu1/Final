@@ -723,7 +723,7 @@ polygon = PoolVector2Array( -21296, -25138.6, -19540.8, -25142.5, -18264, -25145
 position = Vector2( -4104, 12393.5 )
 polygon = PoolVector2Array( -18936, -22056.4, -20480, -22056.4, -20480, -22165.2, -22848, -22158.4, -22840, -22042.8, -28664, -22036, -28672, -22308, -28728, -22314.8, -28736, -21723.1, -18944, -21661.9 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -25.0
 autoplay = true
