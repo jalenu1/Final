@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Howl.mp3-d361da045dc9ce19c4ba5fa305eb6184.mp3str"
+
+[deps]
+
+source_file="res://soundsandmusic/music/Howl.mp3"
+dest_files=[ "res://.import/Howl.mp3-d361da045dc9ce19c4ba5fa305eb6184.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

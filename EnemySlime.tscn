@@ -174,10 +174,10 @@ extents = Vector2( 108, 11.7474 )
 resource_name = "Walk"
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 176.889, 29.5 )
+extents = Vector2( 144, 29.5 )
 
 [sub_resource type="RectangleShape2D" id=47]
-extents = Vector2( 183.111, 25.7778 )
+extents = Vector2( 186, 25.7778 )
 
 [node name="Slime" type="KinematicBody2D"]
 position = Vector2( -79, -52 )
@@ -191,7 +191,7 @@ material = SubResource( 45 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 8 )
 animation = "Slime"
-frame = 13
+frame = 1
 playing = true
 flip_h = true
 
@@ -215,7 +215,7 @@ position = Vector2( 0.666668, 11.3333 )
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopCheck"]
-position = Vector2( 0.666664, -191.667 )
+position = Vector2( 1.33332, -191.667 )
 scale = Vector2( 1.5, 2 )
 shape = SubResource( 15 )
 
@@ -224,7 +224,7 @@ scale = Vector2( 1.5, 1.5 )
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideCheck"]
-position = Vector2( -1.33333, 16.8889 )
+position = Vector2( 5.33333, -28 )
 scale = Vector2( 1, 1.5 )
 shape = SubResource( 47 )
 

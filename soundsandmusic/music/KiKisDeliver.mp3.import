@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/KiKisDeliver.mp3-8e268fc3157eb317c9e9d1dcd96de450.mp3str"
+
+[deps]
+
+source_file="res://soundsandmusic/music/KiKisDeliver.mp3"
+dest_files=[ "res://.import/KiKisDeliver.mp3-8e268fc3157eb317c9e9d1dcd96de450.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

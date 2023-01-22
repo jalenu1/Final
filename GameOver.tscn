@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://platformer-p15-assets (1)/more fonts/KiriFont.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Button.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+outline_size = 5
+outline_color = Color( 0.560784, 0.541176, 0.541176, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_size = 5
+font_data = ExtResource( 1 )
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.367188, 0.0554692, 0.0329895, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 136.0
+margin_top = 160.0
+margin_right = 895.0
+margin_bottom = 261.0
+custom_fonts/font = SubResource( 1 )
+text = "Game Over!"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 352.0
+margin_top = 384.0
+margin_right = 643.0
+margin_bottom = 441.0
+custom_colors/font_color = Color( 0.270588, 0.25098, 0.25098, 1 )
+custom_colors/font_color_hover = Color( 0.85098, 0.85098, 0.85098, 0.803922 )
+custom_colors/font_color_pressed = Color( 0, 1, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Restart"
+flat = true
+script = ExtResource( 2 )
+
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]

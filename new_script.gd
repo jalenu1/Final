@@ -62,12 +62,14 @@ func _physics_process(delta):
 					velocity.x = lerp(velocity.x,0,0.2)
 
 			if Input.is_action_just_pressed("jump") and is_on_floor():
+				$SoundJump.play()
 				$AnimatedSprite.play("Jump")
 				velocity.y = JUMPFORCE
 				state = States.AIR
 			
 	
 			if Input.is_action_just_pressed("jump") and is_on_wall():
+				$SoundJump.play()
 				$AnimatedSprite.play("Jump")
 				velocity.y = JUMPFORCE
 				state = States.WALL

@@ -43,7 +43,7 @@ func _on_TopCheck_body_entered(body):
 
 func _on_SideCheck_body_entered(body):
 	body.ouch(position.x)
-	get_tree().change_scene(("res://Map.tscn"))
+	get_tree().change_scene(("res://GameOver.tscn"))
 
 
 

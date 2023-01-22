@@ -1,0 +1,257 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://platformer-p15-assets (1)/more fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://platformer-p15-assets (1)/more fonts/KiriFont.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://platformer-p15-assets (1)/UI/grey_button04.png" type="Texture" id=3]
+[ext_resource path="res://platformer-p15-assets (1)/UI/grey_button13.png" type="Texture" id=4]
+[ext_resource path="res://PlayButton.gd" type="Script" id=5]
+[ext_resource path="res://soundsandmusic/music/Swinging Pants.ogg" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.85098, 0.85098, 0.85098, 0.803922 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 40
+font_data = ExtResource( 2 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.992157, 0.854902, 0.988235, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 80.0
+margin_top = 112.0
+margin_right = 974.0
+margin_bottom = 163.0
+custom_fonts/font = SubResource( 1 )
+text = "A Simple Cat Platformer"
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 8.0
+margin_top = 384.0
+margin_right = 400.0
+margin_bottom = 576.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+margin_left = 8.0
+margin_top = 24.0
+margin_right = 160.0
+margin_bottom = 64.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="Panel/TextureRect"]
+margin_left = 32.0
+margin_right = 147.0
+margin_bottom = 38.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Space"
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 168.0
+margin_top = 16.0
+margin_right = 293.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 4 )
+text = "= Jump"
+
+[node name="TextureRect2" type="TextureRect" parent="Panel"]
+margin_left = 80.0
+margin_top = 72.0
+margin_right = 120.0
+margin_bottom = 112.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="Panel/TextureRect2"]
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 36.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "D"
+autowrap = true
+
+[node name="TextureRect4" type="TextureRect" parent="Panel"]
+margin_left = 40.0
+margin_top = 72.0
+margin_right = 80.0
+margin_bottom = 112.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Panel/TextureRect4"]
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 36.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "A"
+autowrap = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label2" type="Label" parent="Panel"]
+margin_left = 168.0
+margin_top = 64.0
+margin_right = 381.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 4 )
+text = "= Movement"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="TextureRect3" type="TextureRect" parent="Panel"]
+margin_left = 8.0
+margin_top = 120.0
+margin_right = 72.0
+margin_bottom = 144.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Panel/TextureRect3"]
+margin_left = 8.0
+margin_right = 52.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Space"
+
+[node name="Label2" type="Label" parent="Panel/TextureRect3"]
+margin_left = 72.0
+margin_right = 79.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "+"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel/TextureRect3"]
+margin_left = 88.0
+margin_right = 112.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Panel/TextureRect3/TextureRect"]
+margin_left = 8.0
+margin_right = 18.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "A"
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/TextureRect3"]
+margin_left = 144.0
+margin_right = 168.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Panel/TextureRect3/TextureRect2"]
+margin_left = 8.0
+margin_right = 18.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "D"
+
+[node name="Label3" type="Label" parent="Panel/TextureRect3"]
+margin_left = 120.0
+margin_right = 137.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Or"
+
+[node name="Label4" type="Label" parent="Panel/TextureRect3"]
+margin_left = 176.0
+margin_top = -16.0
+margin_right = 380.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 4 )
+text = "= Wall Jump"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="PlayButton" type="Button" parent="."]
+margin_left = 808.0
+margin_top = 488.0
+margin_right = 1000.0
+margin_bottom = 568.0
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.270588, 0.25098, 0.25098, 1 )
+custom_colors/font_color_hover = Color( 0.85098, 0.85098, 0.85098, 0.803922 )
+custom_colors/font_color_pressed = Color( 0, 1, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "PLAY!"
+flat = true
+script = ExtResource( 5 )
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -20.0
+autoplay = true
+
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]
