@@ -36,6 +36,10 @@ config/name="Final"
 run/main_scene="res://Menu.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/aseprite_importer/plugin.cfg" )

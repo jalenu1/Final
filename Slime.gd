@@ -32,15 +32,12 @@ func _on_TopCheck_body_entered(body):
 	$SoundSquash.play()
 	$AnimatedSprite.play("Die")
 	speed = 0
-	set_collision_layer_bit(5,false)
-	set_collision_mask_bit(0, false)
 	$TopCheck.set_collision_layer_bit(5, false)
 	$TopCheck.set_collision_mask_bit(0,false)
 	$SideCheck.set_collision_layer_bit(5, false)
 	$SideCheck.set_collision_mask_bit(0,false)
-	$Timer.start()
 	body.bounce()
-
+	queue_free()
 
 func _on_SideCheck_body_entered(body):
 	body.ouch(position.x)
@@ -49,6 +46,5 @@ func _on_SideCheck_body_entered(body):
 
 
 
-func _on_Timer_timeout():
-	queue_free()
+
 

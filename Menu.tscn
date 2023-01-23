@@ -406,7 +406,6 @@ position = Vector2( 512, 200 )
 scale = Vector2( 10, 10 )
 frames = SubResource( 19 )
 animation = "New Anim 1"
-frame = 7
 playing = true
 
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]

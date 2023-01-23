@@ -184,7 +184,7 @@ extents = Vector2( 186, 25.7778 )
 position = Vector2( -79, -52 )
 scale = Vector2( 1.5, 1.5 )
 collision_layer = 16
-collision_mask = 35
+collision_mask = 3
 script = ExtResource( 19 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -192,7 +192,7 @@ material = SubResource( 45 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 8 )
 animation = "Slime"
-frame = 3
+frame = 11
 playing = true
 flip_h = true
 
@@ -229,13 +229,9 @@ position = Vector2( 5.33333, -28 )
 scale = Vector2( 1, 1.5 )
 shape = SubResource( 47 )
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="SoundSquash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 32 )
 volume_db = 1.0
 
 [connection signal="body_entered" from="TopCheck" to="." method="_on_TopCheck_body_entered"]
 [connection signal="body_entered" from="SideCheck" to="." method="_on_SideCheck_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
