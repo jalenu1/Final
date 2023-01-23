@@ -638,6 +638,9 @@ extents = Vector2( 26060, 228 )
 
 [node name="Enemy" type="Node2D" parent="."]
 pause_mode = 1
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Slime" parent="Enemy" instance=ExtResource( 3 )]
 position = Vector2( -29600, -20064 )
@@ -648,89 +651,6 @@ detects_cliffs = false
 
 [node name="Slime3" parent="Enemy" instance=ExtResource( 3 )]
 position = Vector2( -26640, -20112 )
-
-[node name="Slime4" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -14840, -17096 )
-
-[node name="Slime5" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -20128, -11976 )
-
-[node name="Slime6" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -18976, -12040 )
-
-[node name="Slime7" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -13928, -11600 )
-
-[node name="Slime8" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -31824, -8480 )
-
-[node name="Slime9" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -30032, -8584 )
-
-[node name="Slime10" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -23960, -5464 )
-
-[node name="Slime11" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -22744, -5328 )
-
-[node name="Slime12" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -21520, -5328 )
-
-[node name="Slime13" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -30808, -2280 )
-
-[node name="Slime14" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -28672, -2344 )
-
-[node name="Slime15" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -31440, 1296 )
-
-[node name="Slime16" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -29904, 1296 )
-
-[node name="Slime17" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -28816, 1200 )
-
-[node name="Slime18" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -8680, 576 )
-detects_cliffs = false
-
-[node name="Slime19" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -6344, 720 )
-detects_cliffs = false
-
-[node name="Slime20" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( -992, 1008 )
-
-[node name="Slime21" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( 33688, 672 )
-
-[node name="Slime22" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( 40960, -2192 )
-
-[node name="Slime23" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( 42160, -1864 )
-
-[node name="Slime24" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( 51376, -2264 )
-
-[node name="Slime25" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( 13360, -11224 )
-
-[node name="Slime26" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( 60264, -4072 )
-
-[node name="Slime27" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( 65768, -3448 )
-
-[node name="Slime28" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( 66896, -3488 )
-
-[node name="Slime29" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( 17440, -1552 )
-
-[node name="Slime30" parent="Enemy" instance=ExtResource( 3 )]
-position = Vector2( 20664, -1768 )
 
 [node name="Decorations" type="TileMap" parent="."]
 position = Vector2( -37000, -23224 )

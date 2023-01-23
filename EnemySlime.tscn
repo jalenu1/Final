@@ -192,7 +192,7 @@ material = SubResource( 45 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 8 )
 animation = "Slime"
-frame = 3
+frame = 22
 playing = true
 flip_h = true
 
@@ -234,7 +234,7 @@ one_shot = true
 
 [node name="SoundSquash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 32 )
-volume_db = 1.0
+volume_db = -5.0
 
 [connection signal="body_entered" from="TopCheck" to="." method="_on_TopCheck_body_entered"]
 [connection signal="body_entered" from="SideCheck" to="." method="_on_SideCheck_body_entered"]
